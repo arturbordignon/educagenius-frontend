@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  background-color: #f7f7f7;
+}
+
+::-webkit-scrollbar {
+  background-color: #f7f7f7;
+  width: 0.4vw;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0d703a;
+}
+
+.show {
+  opacity: 1 !important;
+  visibility: visible !important;
+  right: 0 !important;
+}
