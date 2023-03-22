@@ -22,8 +22,16 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     SET_LOGIN(state, action) {
+      console.log("Action payload:", action.payload);
       state.isLoggedIn = action.payload;
       localStorage.setItem("isLoggedIn", JSON.stringify(action.payload));
+
+      if (action.payload) {
+        if (isLoggedIn === undefined || isLoggedIn === null) {
+          isLoggedIn = false;
+          localStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
+        }
+      }
     },
     SET_NAME(state, action) {
       localStorage.setItem("name", JSON.stringify(action.payload));
