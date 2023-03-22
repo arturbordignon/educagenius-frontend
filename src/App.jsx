@@ -11,19 +11,19 @@ import axios from "axios";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { selectIsLoggedIn } from "./redux/features/auth/authSlice";
 
 axios.defaults.withCredentials = true;
 
 export function App() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   if (isLoggedIn) {
-    history.push("/dashboard");
+    navigate.push("/dashboard");
   } else {
-    history.push("/login");
+    navigate.push("/login");
   }
 
   return (
