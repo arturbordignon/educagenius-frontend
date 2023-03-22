@@ -13,18 +13,21 @@ import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { selectIsLoggedIn } from "./redux/features/auth/authSlice";
+import { useEffect } from "react";
 
 axios.defaults.withCredentials = true;
 
 export function App() {
-  const navigate = useNavigate();
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const navigate = useNavigate();
 
-  if (isLoggedIn) {
-    navigate("/dashboard");
-  } else {
-    navigate("/login");
-  }
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/login");
+    } else {
+      navigate("/dashboard");
+    }
+  }, [isLoggedIn, navigate]);
 
   return (
     <BrowserRouter>
