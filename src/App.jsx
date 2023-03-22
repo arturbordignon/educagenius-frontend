@@ -10,24 +10,21 @@ import { MenuProvas } from "./components/Provas/MenuProvas";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { getLoginStatus } from "./services/authServices";
-import { SET_LOGIN } from "./redux/features/auth/authSlice";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { selectIsLoggedIn } from "./redux/features/auth/authSlice";
 
 axios.defaults.withCredentials = true;
 
 export function App() {
-  const dispatch = useDispatch();
+  const history = useHistory();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  useEffect(() => {
-    async function loginStatus() {
-      const status = await getLoginStatus();
-      dispatch(SET_LOGIN(status));
-    }
-
-    loginStatus();
-  }, [dispatch]);
+  if (isLoggedIn) {
+    history.push("/dashboard");
+  } else {
+    history.push("/login");
+  }
 
   return (
     <BrowserRouter>
