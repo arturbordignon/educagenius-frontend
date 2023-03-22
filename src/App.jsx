@@ -21,9 +21,9 @@ export function App() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   if (isLoggedIn) {
-    navigate.push("/dashboard");
+    navigate("/dashboard");
   } else {
-    navigate.push("/login");
+    navigate("/login");
   }
 
   return (
